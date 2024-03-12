@@ -38,11 +38,13 @@ public class CartController {
     }
 
     @PutMapping("/carts/{id}")
-    public void upadteCart(@RequestBody Cart newcart, @PathVariable("id") Long id){
+    public String upadteCart(@RequestBody Cart newcart, @PathVariable("id") Long id){
         cartService.upadteCart(newcart, id);
+        return "Cart Updated";
     }
     @DeleteMapping("/carts/{id}")
-    public void deleteCart(@PathVariable("id") Long id){
+    public String deleteCart(@PathVariable("id") Long id){
         cartService.deleteCart(id);
+        return "Cart Deleted";
     }
 }
