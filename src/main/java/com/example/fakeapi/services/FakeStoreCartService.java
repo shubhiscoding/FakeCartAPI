@@ -1,14 +1,14 @@
 package com.example.fakeapi.services;
 
+import com.example.fakeapi.FakeCartDto.FakeCart;
 import com.example.fakeapi.models.Cart;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
-import java.util.Date;
 @Service
 public class FakeStoreCartService implements CartService{
     private RestTemplate restTemplate = new RestTemplate();
@@ -53,12 +53,23 @@ public class FakeStoreCartService implements CartService{
         ArrayList<Cart> cartListInDate = new ArrayList<>(Arrays.asList(carts));
         return cartListInDate;
     }
-
+    SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
     @Override
-    public Cart addNewCart(Cart cart) {
+    public Cart addNewCart(FakeCart cart) {
+        Date date = null;
+        try {
+            date = formatter.parse(cart.getDate());
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        Cart newcart = new Cart();
+        newcart.setDate(date);
+        newcart.setProducts(cart.getProducts());
+        newcart.setId(cart.getId());
+        newcart.setUserId(cart.getUserId());
         Cart addedcart = restTemplate.postForObject(
             "https://fakestoreapi.com/carts",
-                cart,
+                newcart,
                 Cart.class
         );
         return addedcart;

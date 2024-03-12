@@ -1,5 +1,6 @@
 package com.example.fakeapi.controller;
 
+import com.example.fakeapi.FakeCartDto.FakeCart;
 import com.example.fakeapi.models.Cart;
 import com.example.fakeapi.services.CartService;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +34,7 @@ public class CartController {
     }
 
     @PostMapping("/carts")
-    public Cart addNewCart(@RequestBody Cart cart){
+    public Cart addNewCart(@RequestBody FakeCart cart){
         return cartService.addNewCart(cart);
     }
 
