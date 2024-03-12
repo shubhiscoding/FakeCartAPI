@@ -76,7 +76,18 @@ public class FakeStoreCartService implements CartService{
     }
 
     @Override
-    public void upadteCart(Cart newcart, Long id) {
+    public void upadteCart(FakeCart cart, Long id) {
+        Date date = null;
+        try {
+            date = formatter.parse(cart.getDate());
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        Cart newcart = new Cart();
+        newcart.setDate(date);
+        newcart.setProducts(cart.getProducts());
+        newcart.setId(cart.getId());
+        newcart.setUserId(cart.getUserId());
        restTemplate.put(
                 "https://fakestoreapi.com/carts/"+id,
                     newcart

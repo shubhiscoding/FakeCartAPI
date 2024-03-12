@@ -14,6 +14,6 @@ public interface CartService {
     public List<Cart> getInDateRange(@PathVariable Date startdate, @PathVariable Date enddate);
     public List<Cart> getUserCart(@PathVariable Long user_id);
     public Cart addNewCart(@RequestBody FakeCart cart);
-    public void upadteCart(@RequestBody Cart newcart, @PathVariable("id") Long id);
+    public void upadteCart(@RequestBody FakeCart newcart, @PathVariable("id") Long id);
     public void deleteCart(@PathVariable("id") Long id);
 }

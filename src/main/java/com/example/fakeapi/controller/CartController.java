@@ -39,7 +39,7 @@ public class CartController {
     }
 
     @PutMapping("/carts/{id}")
-    public String upadteCart(@RequestBody Cart newcart, @PathVariable("id") Long id){
+    public String upadteCart(@RequestBody FakeCart newcart, @PathVariable("id") Long id){
         cartService.upadteCart(newcart, id);
         return "Cart Updated";
     }
