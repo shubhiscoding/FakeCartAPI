@@ -103,7 +103,7 @@ ex:
 {
     "id": 22,
     "userId":5,
-    "date": null,
+    "date": "7-Jun-2013",
     "products":[
         {
             "productId":5,
@@ -118,7 +118,7 @@ ex:
         {
             "id": 11,
             "userId": 5,
-            "date": null,
+            "date": "2013-06-06T18:30:00.000+00:00"
             "products": [
                 {
                     "productId": 5,
@@ -135,7 +135,7 @@ ex:
 {
     "id": 22,
     "userId":5,
-    "date": null,
+    "date": dd-MMM-yyyy,
     "products":[
         {
             "productId":5,
